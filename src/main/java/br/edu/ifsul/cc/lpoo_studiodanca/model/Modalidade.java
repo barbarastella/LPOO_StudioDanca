@@ -1,6 +1,7 @@
 package br.edu.ifsul.cc.lpoo_studiodanca.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +14,14 @@ public class Modalidade implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Integer ID;
     
+    @Column(nullable = false, length = 155, name = "Descrição")
     private String descricao;
 
+    public Modalidade(Integer ID, String descricao) {
+        this.ID = ID;
+        this.descricao = descricao;
+    }
+    
     public Integer getID() {
         return ID;
     }
