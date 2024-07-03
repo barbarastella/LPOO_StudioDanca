@@ -10,9 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity // informa que há uma tabela no BD com nome Pagamento
+@Table(name = "pagamento")
 public class Pagamento implements Serializable {
     
     @Id
@@ -30,20 +33,13 @@ public class Pagamento implements Serializable {
     private double valorPgto;
     
     @Column(name = "Data_pagamento")
+    @Temporal(TemporalType.TIMESTAMP)
     private Calendar dataPgto;
     
     @ManyToOne
     @JoinColumn(name = "Contratos", referencedColumnName = "id", nullable = false)
     private Contratos contrato;
 
-    public Pagamento(Integer ID, Calendar dataVcto, double valor, Calendar dataPgto, double valorPgto) {
-        this.ID = ID;
-        this.dataVcto = dataVcto;
-        this.valor = valor;
-        this.dataPgto = dataPgto;
-        this.valorPgto = valorPgto;
-    }
-    
     public Integer getID() {
         return ID;
     }
@@ -56,12 +52,16 @@ public class Pagamento implements Serializable {
         return valor;
     }
 
+    public double getValorPgto() {
+        return valorPgto;
+    }
+
     public Calendar getDataPgto() {
         return dataPgto;
     }
 
-    public double getValorPgto() {
-        return valorPgto;
+    public Contratos getContrato() {
+        return contrato;
     }
 
     public void setID(Integer ID) {
@@ -76,11 +76,15 @@ public class Pagamento implements Serializable {
         this.valor = valor;
     }
 
+    public void setValorPgto(double valorPgto) {
+        this.valorPgto = valorPgto;
+    }
+
     public void setDataPgto(Calendar dataPgto) {
         this.dataPgto = dataPgto;
     }
 
-    public void setValorPgto(double valorPgto) {
-        this.valorPgto = valorPgto;
+    public void setContrato(Contratos contrato) {
+        this.contrato = contrato;
     }
 }

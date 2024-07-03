@@ -15,5 +15,4 @@ public class TestePersistencia {
         else 
             System.out.println("Falha ao conectar ao BD!");
     } 
-
 }

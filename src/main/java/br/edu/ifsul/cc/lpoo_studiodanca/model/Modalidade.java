@@ -6,8 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity // informa que há uma tabela no BD com nome Modalidade
+@Entity
+@Table(name = "modalidade")
 public class Modalidade implements Serializable {
     
     @Id
@@ -16,11 +18,6 @@ public class Modalidade implements Serializable {
     
     @Column(nullable = false, length = 155, name = "Descrição")
     private String descricao;
-
-    public Modalidade(Integer ID, String descricao) {
-        this.ID = ID;
-        this.descricao = descricao;
-    }
     
     public Integer getID() {
         return ID;
