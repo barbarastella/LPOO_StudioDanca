@@ -11,8 +11,8 @@ public class TestePersistencia {
         PersistenciaJPA jpa = new PersistenciaJPA();
         
         if (jpa.conexaoAberta())
-            System.out.println("Conexão com o BD realizada com sucesso!");
+            System.out.println("\n\nConexão com o BD realizada com sucesso!\n\n");
         else 
-            System.out.println("Falha ao conectar ao BD!");
+            System.out.println("\n\nFalha ao conectar ao BD!\n\n");
     } 
 }

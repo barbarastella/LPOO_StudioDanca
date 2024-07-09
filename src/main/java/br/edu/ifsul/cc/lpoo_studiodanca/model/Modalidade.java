@@ -16,7 +16,7 @@ public class Modalidade implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Integer ID;
     
-    @Column(nullable = false, length = 155, name = "Descrição")
+    @Column(nullable = false, length = 155, name = "descrição")
     private String descricao;
     
     public Integer getID() {

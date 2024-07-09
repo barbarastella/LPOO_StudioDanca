@@ -21,17 +21,17 @@ public class Contratos implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Integer ID;
     
-    @Column(nullable = false, name = "Data_Vencimento")
+    @Column(nullable = false, name = "data_vencimento")
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar data_inicio;
     
-    @Column(name = "Valor_desconto", precision = 10, scale = 2)
+    @Column(name = "Valor_desconto", columnDefinition = "decimal(12,2)")
     private double valor_desconto;
     
-    @Column(nullable = false, name = "Forma_Pagamento")
+    @Column(nullable = false, name = "forma_pagamento")
     @Enumerated(EnumType.STRING)
     private FormaPgto forma_pgto;
-
+    
     public Contratos() {
         this.data_inicio = Calendar.getInstance();
     }

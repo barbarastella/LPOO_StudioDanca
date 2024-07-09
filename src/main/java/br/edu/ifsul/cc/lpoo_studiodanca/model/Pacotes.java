@@ -21,11 +21,11 @@ public class Pacotes implements Serializable {
     @Column(nullable = false, length = 155, name = "Descrição")
     private String descricao;
     
-    @Column(precision = 10, scale = 2)
+    @Column(precision = 10, columnDefinition = "decimal(12,2)")
     private double valor;
     
     @ManyToOne
-    @JoinColumn(name = "modalidade_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "modalidade_id", columnDefinition = "decimal(12,2)")
     private Modalidade modalidade;
 
     public Integer getID() {
