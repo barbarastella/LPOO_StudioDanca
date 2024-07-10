@@ -2,13 +2,18 @@ package br.edu.ifsul.cc.lpoo_studiodanca.model;
     
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,6 +36,9 @@ public class Contratos implements Serializable {
     @Column(nullable = false, name = "forma_pagamento")
     @Enumerated(EnumType.STRING)
     private FormaPgto forma_pgto;
+
+    @OneToMany(mappedBy = "contratos", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
+    private Collection<ItensContrato> itensContrato;
     
     public Contratos() {
         this.data_inicio = Calendar.getInstance();
@@ -66,6 +74,14 @@ public class Contratos implements Serializable {
 
     public void setForma_pgto(FormaPgto forma_pgto) {
         this.forma_pgto = forma_pgto;
+    }
+
+    public Collection<ItensContrato> getItensContrato() {
+        return itensContrato;
+    }
+
+    public void setItensContrato(List<ItensContrato> itensContrato) {
+        this.itensContrato = itensContrato;
     }
 }
 

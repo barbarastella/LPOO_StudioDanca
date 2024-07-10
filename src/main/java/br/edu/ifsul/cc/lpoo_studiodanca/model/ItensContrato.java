@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,10 +15,14 @@ public class ItensContrato implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer ID;
+    public Integer ID;
+     
+    @ManyToOne
+    @JoinColumn(name = "contrato_id")
+    private Contratos contrato;
     
-    private Contratos contratos;
-    
-    
+    @ManyToOne
+    @JoinColumn(name = "pacote_id")
+    private Pacotes pacote;
 }
     
