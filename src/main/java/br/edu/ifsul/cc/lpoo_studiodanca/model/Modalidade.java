@@ -12,16 +12,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "modalidade")
-@NamedQueries({@NamedQuery(name="Modalidade.orderbyid", query="select m from Modalidade m")})
+@NamedQueries({
+    @NamedQuery(name = "Modalidade.orderbyid", query = "SELECT m FROM Modalidade m ORDER BY m.ID")
+})
 public class Modalidade implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Integer ID;
-    
+
     @Column(nullable = false, length = 155, name = "descrição")
     private String descricao;
-    
+
     public Integer getID() {
         return ID;
     }
@@ -29,7 +31,7 @@ public class Modalidade implements Serializable {
     public void setID(Integer ID) {
         this.ID = ID;
     }
-    
+
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
@@ -37,6 +39,9 @@ public class Modalidade implements Serializable {
     public String getDescricao() {
         return descricao;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return descricao;
+    }
 }

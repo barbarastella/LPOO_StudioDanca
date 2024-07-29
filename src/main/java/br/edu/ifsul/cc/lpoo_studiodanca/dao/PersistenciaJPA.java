@@ -44,12 +44,9 @@ public class PersistenciaJPA implements InterfacePersistencia {
         entity.remove(o);
         entity.getTransaction().commit();
     }
-
-    @Override
+    
     public List<Modalidade> getModalidades() {
-        
-        System.out.println("\n\n\n\n" + entity.createNamedQuery("modalidade.orderbyid").getResultList() + "\n\n\n\n");
-        return entity.createNamedQuery("Modalidade").getResultList();
+        return entity.createNamedQuery("Modalidade.orderbyid", Modalidade.class).getResultList();
     }
     
     public void addModalidade(String nome)

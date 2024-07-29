@@ -10,12 +10,24 @@ import javax.swing.JOptionPane;
 public class TelaModalidades extends javax.swing.JFrame {
 
     private PersistenciaJPA persistencia;
-    private List<Modalidade> listModalidades;
+    private DefaultListModel listModelModalidades;
          
     public TelaModalidades() {
         initComponents();
         persistencia = new PersistenciaJPA();
-        listModalidades = persistencia.getModalidades();
+        
+        listModelModalidades = new DefaultListModel<>();
+        lstModalidades.setModel(listModelModalidades);
+        getModalidades();
+    }
+
+    private void getModalidades() {
+        listModelModalidades.clear();
+        List<Modalidade> modalidades = persistencia.getModalidades();
+        
+        for (Modalidade modalidade : modalidades) {
+            listModelModalidades.addElement(modalidade);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -73,22 +85,16 @@ public class TelaModalidades extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
 
-        String nomeNovaModalidade = JOptionPane.showInputDialog(this, "Insira o nome da nova modalidade:", "Adicionar nova modalidade", JOptionPane.PLAIN_MESSAGE);
+        String modalidade = JOptionPane.showInputDialog(this, "Insira o nome da nova modalidade:", "Adicionar nova", JOptionPane.PLAIN_MESSAGE);
 
-        persistencia.addModalidade(nomeNovaModalidade);
-        System.exit(0);
-         
-        DefaultListModel mascaraModalidades = new DefaultListModel<>();
-        
-        for (Object mods: listModalidades)
-            mascaraModalidades.addElement(mods);
-        
-        lstModalidades.setModel(mascaraModalidades);
-         
+        if (modalidade != null && !modalidade.trim().isEmpty()) {
+            persistencia.addModalidade(modalidade);
+            getModalidades();
+        } else {
+            JOptionPane.showMessageDialog(this, "ERRO! O nome da modalidade não pode ser vazio.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnNovoActionPerformed
 
     public static void main(String args[]) {
