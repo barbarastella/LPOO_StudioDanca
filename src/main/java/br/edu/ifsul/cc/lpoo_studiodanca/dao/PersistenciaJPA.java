@@ -1,6 +1,7 @@
 package br.edu.ifsul.cc.lpoo_studiodanca.dao;
 
-import br.edu.ifsul.cc.lpoo_studiodanca.dao.InterfacePersistencia;
+import br.edu.ifsul.cc.lpoo_studiodanca.model.Modalidade;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -14,7 +15,7 @@ public class PersistenciaJPA implements InterfacePersistencia {
         factory = Persistence.createEntityManagerFactory("pu_studio_danca");
         entity = factory.createEntityManager();
     }
-    
+
     @Override
     public Boolean conexaoAberta() {
         return entity.isOpen();
@@ -44,6 +45,21 @@ public class PersistenciaJPA implements InterfacePersistencia {
         entity.getTransaction().commit();
     }
 
+    @Override
+    public List<Modalidade> getModalidades() {
+        
+        System.out.println("\n\n\n\n" + entity.createNamedQuery("modalidade.orderbyid").getResultList() + "\n\n\n\n");
+        return entity.createNamedQuery("Modalidade").getResultList();
+    }
     
-    
+    public void addModalidade(String nome)
+    {
+        entity.getTransaction().begin();
+        
+        Modalidade modalidade = new Modalidade();
+        modalidade.setDescricao(nome);
+        
+        entity.persist(modalidade);
+        entity.getTransaction().commit();
+    }
 }

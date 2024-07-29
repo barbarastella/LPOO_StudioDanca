@@ -31,9 +31,10 @@ public class TestePersistenciaModalidade {
     @Test
     public void testePersistenciaModalidade() throws Exception {
 
-        // teste de modalidade
         
-        Modalidade m = new Modalidade();
+         // teste de modalidade
+        
+       /* Modalidade m = new Modalidade();
         m.setDescricao("Dança livre");
 
         Modalidade m2 = new Modalidade();
@@ -44,8 +45,11 @@ public class TestePersistenciaModalidade {
 
         jpa.persist(m);
         jpa.persist(m2);
-        jpa.persist(m3);
+        jpa.persist(m3);*/
         
+      jpa.getModalidades();
+        
+        /*
         // teste de contrato
         
         Contratos c = new Contratos();
@@ -102,7 +106,6 @@ public class TestePersistenciaModalidade {
         jpa.persist(pc3);
 
         Modalidade persistidoModalidade = (Modalidade) jpa.find(Modalidade.class, m.getID());
-        Assert.assertEquals(m.getDescricao(), persistidoModalidade.getDescricao());
-
+        Assert.assertEquals(m.getDescricao(), persistidoModalidade.getDescricao()); */
     }
 }

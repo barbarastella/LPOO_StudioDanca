@@ -37,7 +37,7 @@ public class Contratos implements Serializable {
     @Enumerated(EnumType.STRING)
     private FormaPgto forma_pgto;
 
-    @OneToMany(mappedBy = "contratos", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "contrato", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
     private Collection<ItensContrato> itensContrato;
     
     public Contratos() {

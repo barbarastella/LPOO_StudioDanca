@@ -6,10 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "modalidade")
+@NamedQueries({@NamedQuery(name="Modalidade.orderbyid", query="select m from Modalidade m")})
 public class Modalidade implements Serializable {
     
     @Id
