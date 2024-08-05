@@ -29,7 +29,7 @@ class Pessoas implements Serializable {
     @Column(name = "aniversario")
     private Calendar data_aniversario;
     
-    @Column(name = "e-mail")
+    @Column(name = "email")
     private String email;
     
     @Column(name = "endereço")
@@ -81,5 +81,10 @@ class Pessoas implements Serializable {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+    
+    @Override
+    public String toString() {
+        return nome;
     }
 }

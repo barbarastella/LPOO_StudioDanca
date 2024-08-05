@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -23,6 +25,10 @@ public class Modalidade implements Serializable {
 
     @Column(nullable = false, length = 155, name = "descrição")
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "modalidade_professor")
+    private Professor professor;
 
     public Integer getID() {
         return ID;
@@ -43,5 +49,13 @@ public class Modalidade implements Serializable {
     @Override
     public String toString() {
         return descricao;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 }

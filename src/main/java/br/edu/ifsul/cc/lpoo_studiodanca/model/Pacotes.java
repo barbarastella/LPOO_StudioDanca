@@ -25,7 +25,7 @@ public class Pacotes implements Serializable {
     private double valor;
     
     @ManyToOne
-    @JoinColumn(name = "modalidade_id", columnDefinition = "decimal(12,2)")
+    @JoinColumn(name = "modalidade_id", columnDefinition = "integer")
     private Modalidade modalidade;
 
     public Integer getID() {

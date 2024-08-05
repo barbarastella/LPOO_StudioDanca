@@ -1,13 +1,18 @@
 package br.edu.ifsul.cc.lpoo_studiodanca.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-public class Professores extends Pessoas {
+@Entity
+@Table(name = "tb_professor")
+public class Professor extends Pessoas implements Serializable {
     
     @Column(name = "data_admissao")
     private Calendar data_admissao;
@@ -33,7 +38,4 @@ public class Professores extends Pessoas {
     public void setModalidade(List<Modalidade> modalidade) {
         this.modalidade = modalidade;
     }
-
-    
-       
 }
